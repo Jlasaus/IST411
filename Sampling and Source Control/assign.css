@@ -1,0 +1,42 @@
+*{
+  box-sizing: border-box;
+}
+
+.flexboxRow{
+  display: flex;
+  flex-wrap: wrap;
+  background-color: darkblue;
+  padding: 5px;
+}
+
+.flexboxColumn{
+  flex: 25%;
+  padding: 20px;
+}
+
+@media screen and (max-width: 992px){
+  .flexboxColumn{
+    flex: 50%;
+  }
+}
+
+@media screen and (max-width: 600px){
+  .flexboxRow{
+    flex-direction: column;
+  }
+}
+
+h1{
+  font-size: 36px;
+  font-family: Verdana;
+}
+
+h2{
+  font-size: 30px;
+  font-family: Georgia;
+}
+
+p{
+  font-size: 24px;
+  font-family: Courier;
+}

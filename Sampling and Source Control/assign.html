@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mod 2 Assignment</title>
+
+  <link rel="stylesheet" href="assign.css">
+
+</head>
+<body>
+
+  <h1>Responsive Four Entry Layout Using a Flexbox</h1>
+  <p><strong>Resize the browser window to see the responsive effect.</strong></p>
+  <p>Screens that are 992px wide or less will resize from four columns to two.</p>
+  <p>Screens that are 600px wide or less will have stacked boxes.</p>
+
+  <div class="flexboxRow">
+    <div class="flexboxColumn" style="background-color: lightseagreen;">
+      <h2>Hyperlink</h2>
+      <p><a href="https://doane.instructure.com" target="hyper">Canvas</a></p>
+    </div>
+
+    <div class="flexboxColumn" style="background-color: lightsalmon;">
+      <h2>Image</h2>
+      <p><img src="Media/random pic.jpg" alt="picture of something in the picture" style="width:100%"></p>
+    </div>
+
+    <div class="flexboxColumn" style="background-color: lightgreen;">
+      <h2>Video</h2>
+      <p><video controls style="width:100%">
+        <source src="Media/random vid.mp4" type="video/mp4" alt="Video of stuff happening">
+          Your browser does not suppirt video file type.
+      </video></p>
+    </div>
+
+    <div class="flexboxColumn" style="background-color: lightpink;">
+      <h2>Geolocation API</h2>
+      <p>Click the button for your coordinates.</p>
+      <button onClick="getLocation()">Get Location Here</button>
+      <p id="geo"></p>
+    </div>
+  </div>
+
+  <script>
+    var x = document.getElementById("geo");
+
+    function getLocation(){
+      if(navigator.geolocation){
+        navigator.geolocation.watchPosition(showPosition);
+      }
+      else{
+        x.innerHTML="Geolocation not supported by browser."
+      }
+    }
+
+    function showPosition(position){
+      x.innerHTML="Latitude: " +position.coords.latitude+"<br>Longitude: " +position.coords.longitude;
+    }
+  </script>
+</body>
+</html>
