@@ -1,0 +1,40 @@
+body {
+  background-color: #6eb3b6;
+
+}
+
+h1 {
+  color:darkblue;
+  font-weight: bolder;
+  font-size: 50px;
+  text-align: center;
+}
+
+h2 {
+  color:darkblue;
+  font-size: 20px;
+  font-weight: lighter;
+  text-align: center;
+}
+
+h3 {
+  font-weight:bold;
+  margin-left: 100px;
+}
+
+p {
+  color:gray;
+  margin-left: 130px;
+}
+
+input {
+  margin-left: 130px;
+}
+
+textarea {
+  margin-left: 130px;
+}
+
+button {
+  margin-left: 130px;
+}

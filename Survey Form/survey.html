@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gaming Platform Survey</title>
+
+  <link rel="stylesheet" href="survey.css">
+
+
+
+</head>
+
+<script>
+  function validateForm() {
+  var x = document.forms["myForm"].value;
+  if (x != "" || x == true) {
+    alert("Submission Received, Thank You!");
+    return true;
+  }
+}
+</script>
+
+<body>
+  <h1>Gaming Platform Survey</h1>
+  <h2>This survey should take less than two minutes to complete, thank you for participating!</h2>
+
+<form name="myForm" onsubmit="return validateForm()">
+
+  <h3>What is your gender?</h3><p>*required</p> <!-- required, radio buttons -->
+  <input type="radio" id="male" name="gender" value="male" required>
+  <label for="male">Male</label><br>
+  <input type="radio" id="female" name="gender" value="female">
+  <label for="female">Female</label><br>
+  <input type="radio" id="other" name="gender" value="other">
+  <label for="other">Other</label><br>
+
+  <h3>What is your current preferred gaming device?</h3><p>*required</p> <!-- required, dropdown box -->
+  <label style="margin-left: 130px;" for="prefplatform">Choose a device:</label>
+  <select name="prefplatform" id="prefplatform" required>
+    <option value="">--Select Here--</option>
+    <option value="pc">PC</option>
+    <option value="xbox">Xbox Series X/S</option>
+    <option value="xboxone">Xbox One</option>
+    <option value="ps4">PS4</option>
+    <option value="ps5">PS5</option>
+    <option value="switch">Nintendo Switch</option>
+    <option value="mobile">Mobile</option>
+    <option value="stadia">Stadia</option>
+    <option value="other">Other</option>
+  </select>
+
+  <h3>What is your favorite game you have ever played?</h3><p>*required</p> <!-- required, small textbox -->
+  <label style="margin-left: 130px;" for="favgame">Enter Favorite Game Here:</label>
+  <input style="margin-left: 0px;" type="text" id="favgame" name="favgame" required><br>
+
+  <h3>What are your three favorite past gaming devices?</h3> <!-- check boxes -->
+  <input type="checkbox" id="device1" name="device1" value="xbox360">
+  <label for="device1">Xbox 360</label><br>
+  <input type="checkbox" id="device2" name="device2" value="xbox">
+  <label for="device2">Xbox</label><br>
+  <input type="checkbox" id="device3" name="device3" value="ps3">
+  <label for="device3">PS3</label><br>
+  <input type="checkbox" id="device4" name="device4" value="ps2">
+  <label for="device4">PS2</label><br>
+  <input type="checkbox" id="device5" name="device5" value="ps1">
+  <label for="device5">PS1</label><br>
+  <input type="checkbox" id="device6" name="device6" value="psp">
+  <label for="device6">PSP</label><br>
+  <input type="checkbox" id="device7" name="device7" value="wii">
+  <label for="device7">Wii</label><br>
+  <input type="checkbox" id="device8" name="device8" value="wiiu">
+  <label for="device8">Wii U</label><br>
+  <input type="checkbox" id="device9" name="device9" value="3ds">
+  <label for="device9">3DS</label><br>
+  <input type="checkbox" id="device10" name="device10" value="ds">
+  <label for="device10">DS</label><br>
+  <input type="checkbox" id="device11" name="device11" value="gbadvance">
+  <label for="device11">Game Boy Advance</label><br>
+  <input type="checkbox" id="device12" name="device12" value="gameboy">
+  <label for="device12">Game Boy</label><br>
+  <input type="checkbox" id="device13" name="device13" value="gamecube">
+  <label for="device13">GameCube</label><br>
+  <input type="checkbox" id="device14" name="device14" value="psvita">
+  <label for="device14">PS Vita</label><br>
+  <input type="checkbox" id="device15" name="device15" value="nes">
+  <label for="device15">NES</label><br>
+  <input type="checkbox" id="device16" name="device16" value="atari">
+  <label for="device16">Atari</label><br>
+  <input type="checkbox" id="device17" name="device17" value="segagen">
+  <label for="device17">Sega Genesis</label><br>
+  <input type="checkbox" id="device18" name="device18" value="na">
+  <label for="device18">Device Not Mentioned</label><br>
+
+  <h3>How many different gaming devices do you currently own?</h3><p>*required</p> <!-- required, radio buttons-->
+  <input type="radio" id="opt1" name="numdevices" value="one" required>
+  <label for="male">1</label><br>
+  <input type="radio" id="opt2" name="numdevices" value="two">
+  <label for="male">2</label><br>
+  <input type="radio" id="opt3" name="numdevices" value="three">
+  <label for="male">3</label><br>
+  <input type="radio" id="opt4" name="numdevices" value="four">
+  <label for="male">4</label><br>
+  <input type="radio" id="opt5" name="numdevices" value="five">
+  <label for="male">5</label><br>
+  <input type="radio" id="opt6" name="numdevices" value="six">
+  <label for="male">6</label><br>
+  <input type="radio" id="opt7" name="numdevices" value="sevenplus">
+  <label for="male">7 or More</label><br>
+
+  <h3>Any additional comments regarding gaming platforms, devices, or games?</h3> <!-- large text area -->
+  <label for="comment"></label>
+  <textarea id="comment" name="comment" rows="10" cols="50"></textarea>
+  <br>
+  <br>
+
+  <button type="submit">Submit</button>
+  <br>
+  <br>
+  <br>
+  <br>
+
+</form>
+</body>
+</html>
