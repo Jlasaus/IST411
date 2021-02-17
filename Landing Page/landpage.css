@@ -6,6 +6,21 @@ body{
   background-color: lightgray;
 }
 
+figcaption{
+  font-style: italic;
+}
+
+p > span{
+  border-style: double;
+  border-color: firebrick;
+  font-size: 18px;
+}
+
+span{
+  font-size: 24px;
+  font-family: Courier;
+}
+
 .headerFlex{
   display: flex;
   flex-wrap: wrap;
@@ -62,35 +77,6 @@ body{
   border-radius: 40px;
 }
 
-@media screen and (max-width: 2000px){
-  .flexColumn{
-    flex: 50%;
-  }
-  .headerTitle{
-    flex: 50%;
-  }
-  .headerRow{
-    flex: 50%;
-  }
-  h1{
-    font-size: 20px;
-    /*not working*/
-  }
-}
-
-@media screen and (max-width: 600px){
-  .flexRow{
-    flex-direction: column;
-  }
-  .headerRow{
-    flex-direction: column;
-  }
-  h1{
-    font-size: 20px;
-    /*not working*/
-  }
-}
-
 h1{
   font-size: 64px;
   font-family: Verdana;
@@ -107,7 +93,6 @@ p{
 }
 
 .desc{
-  font-size: px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -118,4 +103,51 @@ img{
   border-color: darkslategrey;
   border-width: 5px;
   border-radius: 10px;
+}
+
+.dropdown{
+  position: relative;
+  display: inline-block;
+}
+
+.dropdownContent{
+  display: none;
+  position: absolute;
+  background-color: floralwhite;
+  min-width: 400px;
+  box-shadow: lightgoldenrodyellow;
+  padding: 15px;
+  z-index: 1;
+}
+
+.dropdown:hover .dropdownContent{
+  display: block;
+}
+
+@media screen and (max-width: 1045px){
+  .flexColumn{
+    flex: 50%;
+  }
+  .headerTitle{
+    flex: 50%;
+  }
+  .headerRow{
+    flex: 50%;
+  }
+  h1{
+    font-size: 35px;
+  }
+}
+
+
+@media screen and (max-width: 700px){
+  .flexRow{
+    flex-direction: column;
+  }
+  .headerRow{
+    flex-direction: column;
+  }
+  h1{
+    font-size: 25px;
+  }
 }
