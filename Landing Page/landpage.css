@@ -2,28 +2,26 @@
   box-sizing: border-box;
 }
 
-.tabsFlex{
-  display: flex;
-  flex-wrap: wrap;
-  background-color: darkblue;
-  padding: 5px;
-}
-
-.tabsColumn{
-  flex: 25%;
-  padding: 20px;
+body{
+  background-color: lightgray;
 }
 
 .headerFlex{
   display: flex;
   flex-wrap: wrap;
-  background-color: darkblue;
+  border-style: solid;
+  border-color: black;
+  background-color: lightseagreen;
+  border-width: 20px;
+  border-radius: 40px;
   padding: 5px;
 }
 
 .headerTitle{
   flex: 25%;
-  padding: 20px;
+  padding: 10px;
+  display:flex;
+  justify-content: center;
 }
 
 .headerRow{
@@ -33,25 +31,68 @@
   padding: 5px;
 }
 
-.headerColumn{
-  flex: 25%;
-  padding: 20px;
+.flexRow{
+  display: flex;
+  flex-wrap: wrap;
+  background-color: darkblue;
+  padding: 5px;
+  border-style: solid;
+  border-color: darkslategrey;
+  border-width: 10px;
+  border-radius: 15px;
 }
 
-@media screen and (max-width: 992px){
-  .flexboxColumn{
+.flexColumn{
+  flex: 25%;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: row wrap;
+}
+
+.footerRow{
+  display: flex;
+  flex-wrap: wrap;
+  background-color: darkblue;
+  padding: 5px;
+  border-style: solid;
+  border-color: black;
+  border-width: 20px;
+  border-radius: 40px;
+}
+
+@media screen and (max-width: 2000px){
+  .flexColumn{
     flex: 50%;
+  }
+  .headerTitle{
+    flex: 50%;
+  }
+  .headerRow{
+    flex: 50%;
+  }
+  h1{
+    font-size: 20px;
+    /*not working*/
   }
 }
 
 @media screen and (max-width: 600px){
-  .flexboxRow{
+  .flexRow{
     flex-direction: column;
+  }
+  .headerRow{
+    flex-direction: column;
+  }
+  h1{
+    font-size: 20px;
+    /*not working*/
   }
 }
 
 h1{
-  font-size: 36px;
+  font-size: 64px;
   font-family: Verdana;
 }
 
@@ -63,4 +104,18 @@ h2{
 p{
   font-size: 24px;
   font-family: Courier;
+}
+
+.desc{
+  font-size: px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+img{
+  border-style: solid;
+  border-color: darkslategrey;
+  border-width: 5px;
+  border-radius: 10px;
 }
