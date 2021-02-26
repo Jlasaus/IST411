@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <link rel="stylesheet" href="calc.css">
+  <script src="calc.js"></script>
+</head>
+<body>
+  <div class="flexRow">
+    <h1>Central Tendancy Calculator</h1>
+  </div>
+  <div class="flexRow">
+    <div class="flexCol">
+      <!-- inputs -->
+      <form name="inputs">
+        High: <input type="number" name="newHigh" value=""><br>
+        Low: <input type="number" name="newLow" value=""><br>
+        <input type="button" value="Set high and low" onclick="setHighLow()"><br>
+        Numbers: <input type="number" name="newNum" value=""><br>
+        <input type="button" value="Add to list" onclick="addNumber()"><br>
+        <input type="button" value="Clear list" onclick="clearList()">
+      </form>
+    </div>
+    <div class="flexCol">
+      <!-- List -->
+      <h2>Running List</h2>
+      <table id="list">
+      </table>
+      <br>
+      <input type="button" value="Order list" onclick="sortTable()">
+    </div>
+    <div class="flexCol">
+      <div class="average">
+      <!-- Mean -->
+      <h2>Mean</h2>
+      <table id="mean">
+      </table>
+      </div>
+    </div>
+    <div class="flexCol">
+      <!-- Median -->
+      <h2>Median</h2>
+      <table id="median">
+      </table>
+    </div>
+    <div class="flexCol">
+      <!-- Mode -->
+      <h2>Mode</h2>
+      <table id="mode">
+      </table>
+    </div>
+  </div>
+
+  
+</body>
+</html>
