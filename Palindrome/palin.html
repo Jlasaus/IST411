@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Palindrome Check</title>
+
+  <link rel="stylesheet" href="palin.css">
+  <script src="palin.js"></script>
+</head>
+<body>
+  <h1>Palindrome Check</h1>
+
+  <div class="flexRow">
+    <div class="flexCol">
+
+      <h2>Please enter a word to check if it is a palindrome.</h2>
+      <form name="myForm">
+        Enter Word: <input type="text" name="enteredWord" value=""><br>
+        Which Algorithm? Enter 1 or 2: <input type="number" name="enteredNum" value=""><br>
+        Check this to make the check case sensitive: <input type="checkbox" id="caseSense" name="caseSense" value="caps" checked><br>
+        <input type="button" value="check" onclick="checkPalin()">
+      </form>
+
+    </div>
+
+    <div class="flexCol">
+      <h3>Algorithm 1</h3>
+      <table id="algOne">
+      </table><br>
+      <input type="button" value="clear" onclick="clearFirst()">
+    </div>
+
+    <div class="flexCol">
+      <h3>Algorithm 2</h3>
+      <table id="algTwo">
+      </table><br>
+      <input type="button" value="clear" onclick="clearSecond()">
+    </div>
+  </div>
+  
+</body>
+</html>

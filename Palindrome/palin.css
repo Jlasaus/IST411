@@ -1,0 +1,32 @@
+*{
+  box-sizing: border-box;
+}
+
+.flexRow{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.flexCol{
+  flex: 33%;
+  padding: 5px;
+}
+
+@media screen and (max-width: 600px){
+  .flexRow{
+    flex-direction: column;
+  }
+}
+
+h1{
+  text-align: center;
+  font-weight: bolder;
+}
+
+h2{
+  text-align: center;
+}
+
+h3{
+  text-align: center;
+}
