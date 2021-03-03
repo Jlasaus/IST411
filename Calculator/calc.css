@@ -1,0 +1,20 @@
+*{
+  box-sizing: border-box;
+}
+
+.flexRow{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.flexCol{
+  flex: 20%;
+  padding: 5px;
+  justify-content: center;
+}
+
+@media screen and (max-width: 600px){
+  .flexRow{
+    flex-direction: column;
+  }
+}
