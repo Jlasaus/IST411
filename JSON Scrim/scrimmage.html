@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Github Account Info</title>
+
+  <link rel="stylesheet" href="scrimmage.css">
+  <script src="scrimmage.js"></script>
+</head>
+<body>
+  <h1>Github Account Info</h1>
+  <div class="flexRow">
+    <div class="flexColumn">
+      <h2>Input Github Username</h2>
+      <form id="userForm">
+        <input type="text" name="user" value=""><br><br>
+        <input type="button" id="userButton" onclick="getAccountInfo()" value="Get Info">
+      </form><br><br>
+      <h2>User Repos</h2>
+      <p id="repos"></p>
+    </div>
+  </div>
+  
+</body>
+</html>
