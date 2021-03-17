@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cipher Generator</title>
+
+  <link rel="stylesheet" href="cipher.css">
+  <script src="cipher.js"></script>
+
+</head>
+<body>
+  <h1>Cipher Generator</h1>
+
+  <div class="flexRow">
+    <div class="flexCol">
+      <h2>Input Information</h2>
+
+      <label for="newPara">Number of Paragraphs</label>
+      <select id="newPara">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select><br><br>
+
+      <label for="paraType">Paragraph Type</label>
+      <select id="paraType">
+        <option value="meat-and-filler">Meat and Filler</option>
+        <option value="all-meat">Meat Only</option>
+      </select>
+
+      <input type="button" value="Get Cipher One" onclick="getCipher1()">
+      <input type="button" value="Get Cipher Two" onclick="getCipher2()">
+    </div>
+
+    <div class="flexCol">
+      <h2>Raw JSON</h2>
+      <p id="raw">
+      </p>
+    </div>
+
+    <div class="flexCol">
+      <h2>Formatted JSON</h2>
+      <p id="form">
+      </p>
+    </div>
+
+    <div class="flexCol">
+      <h2>Cipher Applied</h2>
+      <p id="ciph">
+      </p>
+    </div>
+  </div>
+  
+</body>
+</html>
