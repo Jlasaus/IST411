@@ -34,7 +34,6 @@ class Survey extends React.Component {
       <header>
         <h1>Gaming Platform Survey</h1>
         <h3>This survey should take less than two minutes to complete, thank you for participating!</h3>
-        <br/>
       </header>
       <form id="survey-form" onSubmit={this.mySubmitHandler}>
         <div class="form-group">
