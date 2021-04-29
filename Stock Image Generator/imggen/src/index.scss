@@ -1,0 +1,57 @@
+$titleFont: 'Alice', serif;   // regular 400
+$buttonFont: 'Architects Daughter', cursive;   // regular 400
+$baseFont: 'Barlow', sans-serif;   // extra-light 200 and regular 400
+$smallHeaderFont: 'Comfortaa', cursive;   // bold 700
+
+/* React CSS */
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/*Bootstrap core CSS*/
+
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+}
+
+/* My CSS */
+
+input {
+  margin: 5px;
+  border: 5px;
+  border-radius: 2px;
+}
+
+h1 {
+  font-family: $titleFont;
+  font-weight: 400;
+  font-size: 64px;
+}
+
+.homeLink {
+  font-family: $titleFont;
+  font-weight: 400;
+  font-size: 20px;
+  margin-left: 8px;
+}
