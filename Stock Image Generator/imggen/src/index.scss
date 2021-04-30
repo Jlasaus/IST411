@@ -2,6 +2,8 @@ $titleFont: 'Alice', serif;   // regular 400
 $buttonFont: 'Architects Daughter', cursive;   // regular 400
 $baseFont: 'Barlow', sans-serif;   // extra-light 200 and regular 400
 $smallHeaderFont: 'Comfortaa', cursive;   // bold 700
+$pMarginPadding: 0px;
+$buttonMarginPadding: 20px;
 
 /* React CSS */
 
@@ -37,6 +39,13 @@ code {
 
 /* My CSS */
 
+p, ul {
+  font-family: $baseFont;
+  font-weight: 400;
+  margin: $pMarginPadding;
+  padding: $pMarginPadding;
+}
+
 input {
   margin: 5px;
   border: 5px;
@@ -49,9 +58,39 @@ h1 {
   font-size: 64px;
 }
 
+h2, h4 {
+  font-family: $smallHeaderFont;
+}
+
 .homeLink {
   font-family: $titleFont;
   font-weight: 400;
   font-size: 20px;
   margin-left: 8px;
+}
+
+.url, .infoList {
+  word-wrap: break-word;
+}
+
+.note > p {
+  font-family: $baseFont;
+  font-weight: 200;
+  font-size: 13px;
+  margin-top: 3px;
+}
+
+button {
+  font-family: $buttonFont;
+  margin: $buttonMarginPadding;
+  padding: $buttonMarginPadding;
+}
+
+.slidecontainer {
+  margin-bottom: 2px;
+}
+
+label {
+  font-family: $baseFont;
+  font-weight: 400;
 }

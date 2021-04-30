@@ -9,17 +9,18 @@ class Page extends React.Component {
 
   state = {
     image: "",
-    info: "",
+    info: {},
     urlString: "",
     userId: "",
-    //making default size 200px
-    userWidth: "200",
+    newId: "",
+    userWidth: "200", //setting default size to 200px
     userHeight: "",
-    userGray: false,
-    userBlur: false,
+    userGray: "false",
+    userBlur: "false",
     userBlurSlider: "",
   }
 
+  //handler that changes states from inputs
   myChangeHandler = (event) => {
     let nam = event.target.name;
     let val = event.target.value;
@@ -27,7 +28,7 @@ class Page extends React.Component {
   }
 
   handleClick(){
-    // choices go at the top of this func
+    //declaring parts of API call URL
     let id = "";
     let gray = "";
     let blurs = "";
@@ -38,36 +39,68 @@ class Page extends React.Component {
     }
 
     // grayscale decision
-    if(this.state.userGray === true){
+    if(this.state.userGray === "true"){
       gray = "?grayscale";
+    }
+    else{
+      gray = "";
     }
 
     // blur decision
-    if(this.state.userBlur === true){
+    if(this.state.userBlur === "true"){
       if(this.state.userBlurSlider > 0){
-        blurs = "&blur=" + this.state.userBlurSlider;
+        if(this.state.userGray === "false"){
+          blurs = "?blur=" + this.state.userBlurSlider;
+        }
+        else{
+          blurs = "&blur=" + this.state.userBlurSlider;
+        }
       }
       else{
+        if(this.state.userGray === "false"){
+          blurs = "?blur="
+        }
+        else{
         blurs = "&blur=";
+        }
       }
     }
 
-    let width = this.state.userWidth + "/"; //if left blank, default size is 200
+    //declares pieces for the API call
+    let width = this.state.userWidth + "/";
     let height = this.state.userHeight;
   
+    //API call URL
     let mainCall = "https://picsum.photos/" + id + width + height + gray + blurs;
 
     alert(mainCall);
 
-    // keeps my this outside of api call
+    // here keeps a this call out here and pullId grabs the id from the url
     let here = this;
-    fetch(mainCall)
+    let pullId = "";
 
-    // API call to get the url for the id and to get the image to display
+    // API call to get the image data
+    fetch(mainCall)
     .then(function(response) {
       //console.log(response.url);
+      //turns the response into a url
       const dat = response.url;
-      here.setState({urlString: dat});
+      here.setState({urlString: dat}, function() {
+        //console.log(this.state.urlString);
+        //splits the url into each part seperated by /
+        let splitString = this.state.urlString.split('/');
+        //console.log(splitString);
+        //grabs the image id which is always located at 4 in the array
+        pullId = splitString[4];
+        //console.log(pullId);
+
+        fetch("https://picsum.photos/id/" + pullId + "/info")
+        .then(res => res.json())
+        .then((data) => {
+          this.setState({info: data});
+          console.log(this.state.info);
+        })
+      });
       response.blob()
       .then(function(myBlob) {
         var url = URL.createObjectURL(myBlob);
@@ -76,29 +109,9 @@ class Page extends React.Component {
       })
     })
 
-          //// initial WORKING
-    /* .then(resp => resp.blob())
-    .then(blob => {
-      const url = URL.createObjectURL(blob);
-      //const strng = url.toString();
-      //this.setState({urlString: url});
-      this.setState({image: url});
-    })  */
-
-    // this needs to read from urlString
-    let newId = 10;
-
-    /// want to make json
-     fetch("https://picsum.photos/id/" + newId + "/info")
-    .then(res => res.text())
-    .then((data) => {
-      this.setState({info: data})
-    })
   }
 
   render() {
-
-    //js stuff goes here
 
     return (
       <div class="container py-4">
@@ -114,17 +127,21 @@ class Page extends React.Component {
         <div class="p-5 mb-4 bg-light rounded-3">
           <div class="container-fluid py-5">
             <h1 class="display-5 fw-bold text-center">Stock Image Generator</h1>
+
+            {/* Site description and instructions */}
             <p class="col-md-12 fs-4 text-center">The generated image will appear in this box after clicking the "Get Image" button in the below Parameters box. A variety of parameters can be selected in the box below. If extra information about the image is wanted, the information will be displayed underneath the image.</p>
             <br />
+
             {/* image will appear here */}
-            <img alt="img" src={this.state.image} />
-
-            {/* displays the url */}
-            <p>{this.state.urlString}</p>
-
-            {/* Need to make an onclick to save the image */}
             <div class="text-center">
-              <button class="btn btn-primary btn-lg" type="button">Save Image</button>
+              {/* eslint-disable-next-line jsx-a11y/img-redundant-alt*/}
+              <img class="img-fluid" alt="Stock Image Displays Here" src={this.state.image} />
+            </div>
+            <br />
+
+            {/* Button to save the image the API call returns */}
+            <div class="text-center">
+              <a href={this.state.image} download="stockImage"><button class="btn btn-outline-dark btn-md" type="button">Save Image</button></a>
             </div>
           </div>
         </div>
@@ -135,58 +152,83 @@ class Page extends React.Component {
               <h2>Parameters</h2>
 
               {/* Image ID Input, if there is nothing in the input then it defaults to random ID */}
-              Image ID: <input type="number" id="idInput" />
+              <label for="userId">Image ID: </label><input type="number" name="userId" id="userId" onChange={this.myChangeHandler} />
               <br />
               {/* Width Input */}
-              Width (pixels): <input type="number" id="widthInput" />
+              <label for="userWidth">Width (pixels): </label><input type="number" name="userWidth" id="userWidth" onChange={this.myChangeHandler} />
               <br />
               {/* Height Input */}
-              Height (pixels): <input type="number" id="heightInput" />           
+              <label for="userHeight">Height (pixels): </label><input type="number" name="userHeight" id="userHeight" onChange={this.myChangeHandler} />           
               <br /><br />
 
+              {/* Filter inputs here, this includes grayscale, blur, blur slider */}
               <h4>Filters</h4>
-              <input type="checkbox" id="grayInput" name="grayInput" value="API CALL GOES HERE FOR gray" />
-              <label for="grayInput">Grayscale</label><br />
-              
-              <input type="checkbox" id="blurInput" name="blurInput" value="API CALL GOES HERE FOR num blur" />
-              <label for="blurInput">Blur</label><br />
-              {/* If slider is set to zero then the basic blur will be used, will need a function for this */}
-              <div class="slidecontainer">
-                <input type="range" min="0" max="10" value="5" class="slider" id="blurSlider" />
-                <p>Value: <span id="blurVal"></span></p>
-              </div>
-              <p>**Set the slider to zero to have a random level of blur applied.</p>
 
-              {/* API call goes on this button */}
-              <button class="btn btn-outline-light" type="button" onClick={this.handleClick}>Get Image</button>
+              <input type="checkbox" id="userGray" name="userGray" value="true" onChange={this.myChangeHandler} />
+              <label for="userGray">Grayscale</label><br />
+              
+              <input type="checkbox" id="userBlur" name="userBlur" value="true" onChange={this.myChangeHandler} />
+              <label for="userBlur">Blur</label><br />
+
+              {/* If slider is set to zero then the basic blur will be used */}
+              <div class="slidecontainer">
+                <input type="range" min="0" max="10" name="userBlurSlider" id="userBlurSlider" onChange={this.myChangeHandler} />
+                <p for="userBlurSlider">Value: <span id="blurVal">{this.state.userBlurSlider}</span></p>
+              </div>
+              <div class="note">
+                <p>**If blur is selected, set the slider to zero to have the default blur applied (5).</p>
+                <p>**To remove the grayscale and blur selections from your choices, refresh the page.</p>
+              </div>
+
+              {/* API happens on this button press */}
+              <button class="btn btn-primary btn-lg" type="button" onClick={this.handleClick}>Get Image</button>
 
             </div>
           </div>
           <div class="col-md-6">
             <div class="h-100 p-5 bg-light border rounded-3">
-              {/* will always make the info API call so this area will always get populated*/}
+              {/* Shows layout of image details for easier readability */}
               <h2>Image Information</h2>
-              <p>Print the information here, probably in the same list as the other box, might just get rid of the checkbox and just always display this info</p>
               <ul>
                 <li>Image ID Number</li>
                 <li>Author</li>
-                <li>Width x Height</li>
-                <li>URL</li>
-                <li>Download URL</li>
+                <li>Width x Height, native size of the image</li>
+                <li>URL, goes to the same image on Unsplash</li>
+                <li>Download URL, this goes to an image only page, this is a full size image</li>
               </ul>
               <br />
-              <p>{this.state.info}</p>
+
+              {/* displays image details */}
+              <div class="infoList">
+                <ul class="col-md-12">
+                  <li>ID: {this.state.info.id}</li>
+                  <li>Author: {this.state.info.author}</li>
+                  <li>WxH: {this.state.info.width} x {this.state.info.height}</li>
+                  <li>URL: <a href={this.state.info.url}>{this.state.info.url}</a></li>
+                  <li>Download URL: <a href={this.state.info.download_url}>{this.state.info.download_url}</a></li>
+                </ul>
+              </div>
+              <br />
+
+              {/* displays the url */}
+              <p>URL Given by API:</p>
+              <div class="url">
+                <a href={this.state.urlString}><p class="col-md-12">{this.state.urlString}</p></a>
+              </div>
+              <div class="note">
+                <p>**This goes to an image only page, the image will be sized accoriding to the parameters.</p>
+              </div>
 
             </div>
           </div>
         </div>
 
         <footer class="pt-3 mt-4 text-muted border-top">
-          &copy; 2021
+          &copy; Josh Lasauskas, 2021
         </footer>
       </div>
     );
   }
 }
-
+//NEED RESETS ON THE STATES, either reset on use or at the top of the code
 export default Page;
