@@ -32,10 +32,20 @@ class Page extends React.Component {
     let id = "";
     let gray = "";
     let blurs = "";
+    let height = this.state.userHeight;
+    let width = "";
 
     // ID decision
     if(this.state.userId !== ""){
       id = "id/" + this.state.userId + "/";
+    }
+
+    // Width decision
+    if(this.state.userWidth === ""){
+      width = "200/"
+    }
+    else{
+      width = this.state.userWidth + "/";
     }
 
     // grayscale decision
@@ -66,9 +76,7 @@ class Page extends React.Component {
       }
     }
 
-    //declares pieces for the API call
-    let width = this.state.userWidth + "/";
-    let height = this.state.userHeight;
+
   
     //API call URL
     let mainCall = "https://picsum.photos/" + id + width + height + gray + blurs;
@@ -112,12 +120,12 @@ class Page extends React.Component {
   }
 
   render() {
-
     return (
       <div class="container py-4">
         <header class="pb-3 mb-4 border-bottom">
           <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" class="me-2" viewBox="0 0 118 94" role="img"><title>Stock Image Generator Home</title><path fill-rule="evenodd" clip-rule="evenodd" d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z" fill="currentColor"></path></svg>
+            <img class="img-fluid" alt="Site Logo" src="favicon-32x32.png"></img>
+            <title>Stock Image Generator Home</title>
             <div class="homeLink">
               <span class="fs-4">Stock Image Generator</span>
             </div>
@@ -129,7 +137,7 @@ class Page extends React.Component {
             <h1 class="display-5 fw-bold text-center">Stock Image Generator</h1>
 
             {/* Site description and instructions */}
-            <p class="col-md-12 fs-4 text-center">The generated image will appear in this box after clicking the "Get Image" button in the below Parameters box. A variety of parameters can be selected in the box below. If extra information about the image is wanted, the information will be displayed underneath the image.</p>
+            <p class="col-md-12 fs-4 text-center">The generated image will appear in this box after clicking the "Get Image" button in the below Parameters box. A variety of parameters can be selected in the box below. Extra information about the image will be displayed underneath the image box. These images are free to use! More information about use can be found <a href="https://unsplash.com/">here</a></p>
             <br />
 
             {/* image will appear here */}
@@ -151,33 +159,42 @@ class Page extends React.Component {
             <div class="h-100 p-5 text-white bg-dark rounded-3">
               <h2>Parameters</h2>
 
-              {/* Image ID Input, if there is nothing in the input then it defaults to random ID */}
-              <label for="userId">Image ID: </label><input type="number" name="userId" id="userId" onChange={this.myChangeHandler} />
+              {/* Image ID Input, if there is nothing in the input then API gives it a random ID */}
+              <label for="userId">Image ID: </label><input type="number" name="userId" id="userId" onChange={this.myChangeHandler} alt="Input for Image ID" />
               <br />
-              {/* Width Input */}
-              <label for="userWidth">Width (pixels): </label><input type="number" name="userWidth" id="userWidth" onChange={this.myChangeHandler} />
+              {/* Width Input, default is set to 200px */}
+              <label for="userWidth">Width (pixels): </label><input type="number" name="userWidth" id="userWidth" onChange={this.myChangeHandler} alt="Input for Image Width" />
               <br />
               {/* Height Input */}
-              <label for="userHeight">Height (pixels): </label><input type="number" name="userHeight" id="userHeight" onChange={this.myChangeHandler} />           
+              <label for="userHeight">Height (pixels): </label><input type="number" name="userHeight" id="userHeight" onChange={this.myChangeHandler} alt="Input for Image Height" />           
               <br /><br />
 
               {/* Filter inputs here, this includes grayscale, blur, blur slider */}
               <h4>Filters</h4>
 
-              <input type="checkbox" id="userGray" name="userGray" value="true" onChange={this.myChangeHandler} />
               <label for="userGray">Grayscale</label><br />
+              <select id="userGray" name="userGray" onChange={this.myChangeHandler}> 
+                <option selected value="false">No Grayscale</option>
+                <option value="true">Apply Grayscale</option>
+              </select>
+              <br /><br />
               
-              <input type="checkbox" id="userBlur" name="userBlur" value="true" onChange={this.myChangeHandler} />
               <label for="userBlur">Blur</label><br />
+              <select id="userBlur" name="userBlur" onChange={this.myChangeHandler}> 
+                <option selected value="false">No Blur</option>
+                <option value="true">Apply Blur</option>
+              </select>
+              <br /><br />
 
               {/* If slider is set to zero then the basic blur will be used */}
               <div class="slidecontainer">
-                <input type="range" min="0" max="10" name="userBlurSlider" id="userBlurSlider" onChange={this.myChangeHandler} />
+                <input type="range" min="0" max="10" name="userBlurSlider" id="userBlurSlider" onChange={this.myChangeHandler} alt="Slider to Adjust Blur Strength" />
                 <p for="userBlurSlider">Value: <span id="blurVal">{this.state.userBlurSlider}</span></p>
               </div>
+              <br />
+
               <div class="note">
-                <p>**If blur is selected, set the slider to zero to have the default blur applied (5).</p>
-                <p>**To remove the grayscale and blur selections from your choices, refresh the page.</p>
+                <p>**If blur is selected, set the slider to zero to have the default blur applied (5), or specify a strength from 1-10.</p>
               </div>
 
               {/* API happens on this button press */}
@@ -192,9 +209,9 @@ class Page extends React.Component {
               <ul>
                 <li>Image ID Number</li>
                 <li>Author</li>
-                <li>Width x Height, native size of the image</li>
-                <li>URL, goes to the same image on Unsplash</li>
-                <li>Download URL, this goes to an image only page, this is a full size image</li>
+                <li>Width x Height: native size of the image</li>
+                <li>URL: goes to the same image on Unsplash</li>
+                <li>Download URL: this goes to an image only page, this is the full size image</li>
               </ul>
               <br />
 
@@ -215,8 +232,9 @@ class Page extends React.Component {
               <div class="url">
                 <a href={this.state.urlString}><p class="col-md-12">{this.state.urlString}</p></a>
               </div>
+              <br />
               <div class="note">
-                <p>**This goes to an image only page, the image will be sized accoriding to the parameters.</p>
+                <p>**This goes to an image only page, the image is sized according to the parameters.</p>
               </div>
 
             </div>
@@ -230,5 +248,5 @@ class Page extends React.Component {
     );
   }
 }
-//NEED RESETS ON THE STATES, either reset on use or at the top of the code
+
 export default Page;

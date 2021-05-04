@@ -1,9 +1,24 @@
+// Pixel to rem converter
+@function toRem($value) {
+  $remValue: ($value / 16) + rem; 
+  @return $remValue;
+}
+
+// Fonts
 $titleFont: 'Alice', serif;   // regular 400
 $buttonFont: 'Architects Daughter', cursive;   // regular 400
 $baseFont: 'Barlow', sans-serif;   // extra-light 200 and regular 400
 $smallHeaderFont: 'Comfortaa', cursive;   // bold 700
-$pMarginPadding: 0px;
-$buttonMarginPadding: 20px;
+// Font Weights
+$normalWeight: 400;
+$smallWeight: 200;
+// Margins and Paddings
+$pMarginPadding: 0;
+$buttonMarginPadding: toRem(20);
+// Font Sizes
+$homeFontSize: toRem(20);
+$smallFontSize: toRem(13);
+$titleFontSize: toRem(64);
 
 /* React CSS */
 
@@ -41,21 +56,21 @@ code {
 
 p, ul {
   font-family: $baseFont;
-  font-weight: 400;
+  font-weight: $normalWeight;
   margin: $pMarginPadding;
   padding: $pMarginPadding;
 }
 
 input {
-  margin: 5px;
-  border: 5px;
-  border-radius: 2px;
+  margin: toRem(5);
+  border: toRem(5);
+  border-radius: toRem(2);
 }
 
 h1 {
   font-family: $titleFont;
-  font-weight: 400;
-  font-size: 64px;
+  font-weight: $normalWeight;
+  font-size: $titleFontSize;
 }
 
 h2, h4 {
@@ -64,20 +79,22 @@ h2, h4 {
 
 .homeLink {
   font-family: $titleFont;
-  font-weight: 400;
-  font-size: 20px;
-  margin-left: 8px;
+  font-weight: $normalWeight;
+  font-size: $homeFontSize;
+  margin-left: toRem(8);
 }
 
 .url, .infoList {
   word-wrap: break-word;
 }
 
-.note > p {
+.note {
+  p {
   font-family: $baseFont;
-  font-weight: 200;
-  font-size: 13px;
-  margin-top: 3px;
+  font-weight: $smallWeight;
+  font-size: $smallFontSize;
+  margin-top: toRem(3);
+  }
 }
 
 button {
@@ -87,10 +104,10 @@ button {
 }
 
 .slidecontainer {
-  margin-bottom: 2px;
+  margin-bottom: toRem(2);
 }
 
 label {
   font-family: $baseFont;
-  font-weight: 400;
+  font-weight: $normalWeight;
 }
