@@ -81,7 +81,7 @@ class Page extends React.Component {
     //API call URL
     let mainCall = "https://picsum.photos/" + id + width + height + gray + blurs;
 
-    alert(mainCall);
+    //alert(mainCall);
 
     // here keeps a this call out here and pullId grabs the id from the url
     let here = this;
